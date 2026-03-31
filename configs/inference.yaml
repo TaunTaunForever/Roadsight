@@ -1,0 +1,20 @@
+project_name: RoadSight
+
+inference:
+  model_weights: runs/detect/runs/train/roadsight_bdd100k_full_yolov8s6_continue10/weights/best.pt
+  data_config: data/processed/bdd100k_yolo/dataset.yaml
+  confidence_threshold: 0.25
+  output_dir: runs/inference
+  eval_run_name: evaluate_full_yolov8s6_continue10_best
+  image_run_name: predict_image
+  video_run_name: predict_video
+  device: auto
+  save_visualizations: true
+  save_json: false
+
+api:
+  host: 0.0.0.0
+  port: 8000
+
+runtime:
+  log_level: INFO

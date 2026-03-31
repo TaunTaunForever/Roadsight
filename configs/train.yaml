@@ -1,0 +1,19 @@
+project_name: RoadSight
+
+training:
+  model_name: yolov8s
+  model_weights: yolov8s.pt
+  data_config: data/processed/bdd100k_yolo/dataset.yaml
+  output_dir: runs/train
+  run_name: roadsight_bdd100k_full_yolov8s
+  epochs: 10
+  image_size: 640
+  batch_size: 80
+  workers: 4
+  device: auto
+  use_all_available_gpus: true
+  fallback_to_cpu_on_incompatible_gpu: true
+  pretrained: true
+
+runtime:
+  log_level: INFO

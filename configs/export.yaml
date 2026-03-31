@@ -1,0 +1,12 @@
+project_name: RoadSight
+
+export:
+  model_weights: runs/detect/runs/train/roadsight_bdd100k_full_yolov8s6_continue10/weights/best.pt
+  output_dir: runs/export
+  run_name: roadsight_bdd100k_full_yolov8s6_continue10_coreml
+  image_size: 640
+  compute_precision: float16
+  include_nms: true
+
+runtime:
+  log_level: INFO

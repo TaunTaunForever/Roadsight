@@ -1,0 +1,31 @@
+project_name: RoadSight
+
+dataset:
+  name: bdd100k
+  raw_annotations: data/raw/labels
+  raw_images: data/raw/images
+  output_dir: data/processed/bdd100k_yolo
+  image_export_mode: copy
+  missing_image_policy: warn
+  malformed_annotation_policy: warn
+  subset:
+    enabled: false
+    seed: 42
+    strategy: balanced_by_class_presence
+    max_images_per_split: 1000
+  classes:
+    - car
+    - person
+    - traffic light
+    - traffic sign
+    - bike
+  splits:
+    train:
+      annotations: data/raw/labels/bdd100k_labels_images_train.json
+      images: bdd100k/bdd100k/images/100k/train
+    val:
+      annotations: data/raw/labels/bdd100k_labels_images_val.json
+      images: bdd100k/bdd100k/images/100k/val
+
+runtime:
+  log_level: INFO

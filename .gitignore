@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+Roadsight_venv/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local datasets and large assets
+bdd100k/
+bdd100k_labels_release/
+bdd100k_seg/
+data/raw/
+data/processed/
+
+# Training / inference artifacts
+runs/
+
+# Model weights and exports
+*.pt
+*.onnx
+*.engine
+*.tflite
+*.mlmodel
+*.mlpackage
+*.mlmodelc
+
+# Media outputs
+*.avi
+*.mp4
+*.mov
+*.MOV
+
+# Local environment files
+.env
