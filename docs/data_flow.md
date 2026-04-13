@@ -52,26 +52,30 @@ The repo is currently aligned around these defaults:
 
 - classes: `car`, `person`, `traffic light`, `traffic sign`, `bike`
 - processed dataset path: `data/processed/bdd100k_yolo/dataset.yaml`
-- training run name: `roadsight_bdd100k_subset_1000`
-- recommended weights: `runs/detect/runs/train/roadsight_bdd100k_subset_1000/weights/best.pt`
+- training run name: `roadsight_bdd100k_full_yolov8s`
+- training model: `yolov8s`
+- subset sampling: disabled by default in `configs/data.yaml`
+- recommended weights: `runs/detect/runs/train/roadsight_bdd100k_full_yolov8s6_continue10/weights/best.pt`
 
 This means evaluation, image inference, video inference, and the FastAPI app all share the same default model checkpoint.
 
-## Subset workflow
+## Optional subset workflow
 
 When you have BDD100K locally:
 
 1. Place the JSON label files under `data/raw/labels/`.
 2. Place split image folders where `configs/data.yaml` expects them. In the current config, the labels come from `data/raw/labels/` while the image roots point at `bdd100k/bdd100k/images/100k/train` and `bdd100k/bdd100k/images/100k/val`.
 3. Adjust `configs/data.yaml` if your local paths differ.
-4. Set `dataset.subset.max_images_per_split` to a small number like `100`, `1000`, or `3000`.
-5. Run:
+4. If you want a smaller experimental dataset, set `dataset.subset.enabled: true`.
+5. Set `dataset.subset.max_images_per_split` to a small number like `100`, `1000`, or `3000`.
+6. Optionally keep `dataset.subset.strategy: balanced_by_class_presence` so rare classes remain better represented.
+7. Run:
 
 ```bash
 ./Roadsight_venv/bin/python -m src.data.prepare_bdd --config configs/data.yaml
 ```
 
-That produces a smaller processed YOLO dataset under `data/processed/bdd100k_yolo/` that is suitable for initial training experiments.
+That produces a smaller processed YOLO dataset under `data/processed/bdd100k_yolo/` that is suitable for faster initial experiments. By default, though, the repo is configured to use the full available dataset rather than a capped subset.
 
 ## End-to-end flow
 
