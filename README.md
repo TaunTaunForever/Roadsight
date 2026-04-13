@@ -187,11 +187,3 @@ The repo is currently configured around the full-dataset `yolov8s` workflow:
 - training settings in [configs/train.yaml](/home/daniel/Development/Roadsight/configs/train.yaml): `model=yolov8s`, `epochs=10`, `batch_size=80`, `image_size=640`
 - inference weights: `runs/detect/runs/train/roadsight_bdd100k_full_yolov8s6_continue10/weights/best.pt`
 
-## Next Polishing Steps
-
-What remains is not core feature implementation but final polish:
-
-- expand project narrative and benchmark summary
-- validate end-to-end demo flows with chosen sample assets
-- tighten reproducibility and onboarding
-- package the repo as a stronger portfolio-ready ML engineering showcase
